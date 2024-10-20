@@ -209,6 +209,11 @@
             display: none;
         }
 
+        .problem-form-button{
+            background-color: #f0f8ff;
+            filter:contrast(128%);
+        }
+
         @media only screen and (max-width: 480px) {
             header img {
                 width: 80vw;
@@ -236,6 +241,9 @@
             .hero-action {
                 display: flex;
                 flex-direction: column-reverse;
+                z-index: 999;
+            }
+            .problemForm * {
                 z-index: 999;
             }
         }
