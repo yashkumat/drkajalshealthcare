@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Checkup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0px 24px;
+        }
+
+        .set-logo {
+            transition: all 1s linear;
+            width: 128px !important;
+            padding-top: 32px;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+        }
+
+        header img {
+            padding-top: 64px;
+            width: 384px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            padding: 16px 32px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .yes-btn:hover {
+            filter: brightness(128%);
+        }
+
+        .yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .no-btn:hover {
+            filter: contrast(256%);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .services,
+        .problem-form {
+            margin-top: 16px;
+        }
+
+        .problem-form textarea {
+            height: 64px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            padding: 16px;
+            font-size: 16px;
+        }
+
+        .problem-form button {
+            width: 100%;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 8px;
+            right: 16px;
+            width: 100vw;
+            text-align: end;
+            font-size: 24px;
+        }
+
+        footer i {
+            color: #4CAF50;
+            margin: 16px 0px;
+        }
+
+        footer a {
+            margin: 0px 8px;
+            text-decoration: none;
+        }
+
+        footer a:hover i {
+            color: #f44336;
+        }
+
+        footer a:hover .tooltip {
+            display: inline-block;
+            font-size: 8px;
+            color: #f44336;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-action button {
+            margin: 16px;
+        }
+
+        .services-card {
+            padding: 16px;
+        }
+
+        .services-card i {
+            font-size: 40px;
+            margin: 8px 0px;
+            color: #4CAF50;
+
+        }
+
+        .all-services-cards {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+
+        .services-card-heading {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        .problemForm {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services-card:hover {
+            background-color: #4CAF50;
+            border-radius: 8px;
+            transition: all 0.5s linear;
+            filter: brightness(128%);
+        }
+
+        .services-card:hover i {
+            color: #f0f8ff;
+        }
+
+        .services-card:hover .services-card-heading {
+            color: #f0f8ff;
+        }
+
+        .services-action {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .services-action button {
+            margin-top: 16px;
+        }
+
+        .services-action button:hover {
+            background-color: #4CAF50;
+            filter: brightness(128%);
+        }
+
+        .problem-form-button:hover {
+            background-color: #4CAF50;
+            filter: brightness(128%);
+        }
+
+        .tooltip {
+            display: none;
+        }
+
+        @media only screen and (max-width: 480px) {
+            header img {
+                width: 80vw;
+
+            }
+
+            .all-services-cards {
+                display: grid;
+                grid-template-columns: auto auto;
+            }
+
+            .services-card-heading {
+                font-size: 16px;
+            }
+
+            .hero-action {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img id="logo" src="logo.png" alt="">
+    </header>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <div class="hero" id="hero-section">
+            <h2>How are you feeling today?</h2>
+            <div class="hero-action">
+                <button class="yes-btn" onclick="showServices()">Yes, I’m feeling good</button>
+                <button class="no-btn" onclick="showProblemForm()">No, I’m not feeling well</button>
+            </div>
+
+        </div>
+
+
+        <!-- Services Section -->
+        <div id="services-section" class="services hidden">
+            <h2>Our Services</h2>
+            <div class="all-services-cards">
+                <div class="services-card">
+                    <i class="fa-solid fa-staff-snake"></i>
+                    <div class="services-card-heading">Homoeopathic Physician</div>
+                    <p>The idea that a disease can be cured by a substance that produces similar symptoms in healthy
+                        people.</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-solid fa-head-side-virus"></i>
+                    <div class="services-card-heading">Counseling Psychologist</div>
+                    <p>Counsellors adopt a more person-centred approach to solve mental health issues and challenges
+                        faced by individuals across their lifespan.</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-brands fa-nutritionix"></i>
+                    <div class="services-card-heading">Nutritionist and Dietitian</div>
+                    <p>I can advises you on food you consume and their impacts on your health.</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <div class="services-card-heading">Holistic Healing</div>
+                    <p>Patient education on lifestyle changes and self-care to promote wellness.</p>
+                </div>
+            </div>
+            <div class="services-action">
+                <a href="https://wa.me/+918369739825?text="><button>Get online Consultation</button></a>
+            </div>
+
+        </div>
+
+        <!-- Problem Form Section -->
+        <div id="problem-form-section" class="problem-form hidden">
+            <h2>Tell us about your problem</h2>
+            <form id="problemForm" class="problemForm">
+                <textarea name="problem" placeholder="Describe your issue" required></textarea>
+                <button class="problem-form-button" type="submit">Send to Doctor via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <a href="tel:+918369739825"><i class="fa-solid fa-phone-flip"></i> <span class="tooltip">Call</span></a>
+        <a href="https://wa.me/+918369739825?text="><i class="fa-brands fa-whatsapp"></i> <span
+                class="tooltip">WhatsApp</span></a>
+        <a href="https://maps.app.goo.gl/dB3piYHP6kUSpPCu5"><i class="fa-solid fa-location-dot"></i> <span
+                class="tooltip">Location</span></a>
+    </footer>
+
+    <script>
+        function showServices() {
+            setLogo();
+            document.getElementById('services-section').classList.remove('hidden');
+            document.getElementById('problem-form-section').classList.add('hidden');
+        }
+
+        function showProblemForm() {
+            setLogo();
+            document.getElementById('problem-form-section').classList.remove('hidden');
+            document.getElementById('services-section').classList.add('hidden');
+        }
+
+        function setLogo() {
+            document.getElementById('logo').classList.add('set-logo');
+        }
+
+        document.getElementById('problemForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const problem = e.target.problem.value;
+            const whatsappLink = `https://wa.me/+918369739825?text=Hello Doctor, I have following problem: ${problem}`;
+            window.open(whatsappLink, '_blank');
+        });
+    </script>
+
+</body>
+
+</html>
